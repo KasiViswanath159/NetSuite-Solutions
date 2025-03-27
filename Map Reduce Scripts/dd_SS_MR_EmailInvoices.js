@@ -191,7 +191,7 @@ define(['N/runtime', 'N/search', 'N/record', 'N/error', 'N/email', 'N/render', '
                     log.debug({title: 'Checking', details: 'body: ' + body});
 
                     log.debug({title: 'Checking', details: 'Sending email'});
-                    emailMod.send({author: emailFrom, recipients: toEmails, body: body, subject: subject, cc: null, relatedRecords: {transactionId: txnId}, attachments: [invFile]});
+                    emailMod.sendBulk({author: emailFrom, recipients: toEmails, body: body, subject: subject, cc: null, relatedRecords: {transactionId: txnId}, attachments: [invFile]});
                     log.debug({title: 'Checking', details: 'Email sent'});
                     returnVal = '';
                 }
@@ -260,7 +260,7 @@ define(['N/runtime', 'N/search', 'N/record', 'N/error', 'N/email', 'N/render', '
             log.debug({title: 'Checking', details: 'newEmailArray: ' + newEmailArray.length});
             if(newEmailArray.length > 0)
             {
-                emailMod.send({
+                emailMod.sendBulk({
                     author: scriptObj.getParameter('custscript_ns_inv_email_frm'),
                     recipients: emailArray,
                     subject: mailSubject,
